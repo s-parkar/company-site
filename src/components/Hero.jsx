@@ -10,7 +10,7 @@ const Hero = () => {
   const videos = [
     'https://streamable.com/e/n3mkm3',
     'https://streamable.com/e/bdh3ju',
-    'https://streamable.com/e/YOUR_VIDEO_ID'
+    ''
   ];
 
   useEffect(() => {
