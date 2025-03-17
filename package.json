@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/html": "^1.13.2",
+    "@cloudinary/url-gen": "^1.21.0",
     "@emailjs/browser": "^4.4.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",

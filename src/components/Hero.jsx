@@ -1,65 +1,112 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import '../styles/3d-effects.css';
+import { heroVideos, getVideoUrl } from '../config/cloudinary';
 
 const Hero = () => {
-  const [currentVideo, setCurrentVideo] = useState(0);
-
-  // ✅ Use Streamable Embed URLs
-  const videos = [
-    'https://streamable.com/e/n3mkm3',
-    'https://streamable.com/e/bdh3ju',
-    ''
-  ];
+  const videoRef = useRef(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideo((prev) => (prev + 1) % videos.length);
-    }, 8000);
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      const loadVideo = async (index) => {
+        try {
+          setIsVideoLoaded(false);
+          setHasError(false);
+          const videoUrl = getVideoUrl(heroVideos[index]);
+          videoElement.src = videoUrl;
+          videoElement.autoplay = true;
+          videoElement.loop = false;
+          videoElement.muted = true;
+          videoElement.playsInline = true;
+          await videoElement.load();
+        } catch (error) {
+          console.error('Video loading error:', error);
+          setHasError(true);
+        }
+      };
 
-    return () => clearInterval(interval);
-  }, []);
+      const handleLoadedData = () => {
+        setIsVideoLoaded(true);
+        videoElement.classList.add('active');
+        videoElement.play().catch(error => {
+          console.error('Video autoplay failed:', error);
+          setHasError(true);
+        });
+      };
+
+      const handleError = (error) => {
+        console.error('Video loading error:', error);
+        setHasError(true);
+        // Try loading the next video if current one fails
+        const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
+        setCurrentVideoIndex(nextIndex);
+      };
+
+      const handleVideoEnd = () => {
+        videoElement.classList.remove('active');
+        setTimeout(() => {
+          const nextIndex = (currentVideoIndex + 1) % heroVideos.length;
+          setCurrentVideoIndex(nextIndex);
+        }, 1000); // Wait for fade out transition
+      };
+
+      videoElement.addEventListener('loadeddata', handleLoadedData);
+      videoElement.addEventListener('error', handleError);
+      videoElement.addEventListener('ended', handleVideoEnd);
+      
+      loadVideo(currentVideoIndex);
+
+      const videoTimer = setInterval(() => {
+        handleVideoEnd();
+      }, 12000);
+
+      return () => {
+        videoElement.removeEventListener('loadeddata', handleLoadedData);
+        videoElement.removeEventListener('error', handleError);
+        videoElement.removeEventListener('ended', handleVideoEnd);
+        clearInterval(videoTimer);
+      };
+    }
+  }, [currentVideoIndex]);
 
   return (
     <section className="hero">
       <div className="hero-bg">
         <div className="video-container">
-          {videos.map((video, index) => (
-            <motion.iframe
-              key={index}
-              src={`${video}?autoplay=1`} // Adding autoplay query parameter
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allowFullScreen
-              className={`hero-video ${currentVideo === index ? 'active' : ''}`}
-              style={{
-                width: '100%',
-                height: '100%',
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                overflow: 'hidden',
-                opacity: currentVideo === index ? 1 : 0,
-                transition: 'opacity 1.5s'
-              }}
-            />
-          ))}
+          <video
+            ref={videoRef}
+            className={`hero-video ${isVideoLoaded ? 'active' : ''}`}
+            playsInline
+          />
+          {!isVideoLoaded && !hasError && (
+            <div className="loading-overlay">
+              <div className="loading-spinner"></div>
+            </div>
+          )}
+          {hasError && (
+            <div className="error-overlay">
+              <p>Failed to load video</p>
+            </div>
+          )}
         </div>
       </div>
       <div className="container">
-        <motion.div className="hero-content">
-          <motion.h1 className="text-3d">S . M . NAIK & ASSOCIATES</motion.h1>
-          <motion.h2>Accuracy. Integrity. Excellence.</motion.h2>
-          <motion.p>
+        <div className="hero-content">
+          <h1 className="text-3d">S . M . NAIK & ASSOCIATES</h1>
+          <h2>Accuracy. Integrity. Excellence.</h2>
+          <p>
             Professional land surveying services with over 25 years of industry experience
-          </motion.p>
-          <motion.div className="hero-buttons">
+          </p>
+          <div className="hero-buttons">
             <Link to="/services" className="btn primary-btn">Our Services</Link>
             <Link to="/contact" className="btn secondary-btn">Get a Quote</Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
