@@ -10,9 +10,9 @@ const Projects = () => {
       tags: ['Boundary Survey', 'Topographic Survey','Cadastral Survey']
     },
     {
-      title: 'Samrudhi Higway project',
+      title: 'Samruddhi Mahamarg project',
       description: 'Demarcation of ROW of Proposed Road Alignment from Igatpure (Talegaon) To  Kopargaon Dhotre Village.',
-      image: '/assets/img/project3.svg',
+      image: '/assets/img/p2.jpg',
       tags: ['Topographic Survey', 'Travese Survey', 'DGPS Survey','Right-of-Way']
     },
     {
