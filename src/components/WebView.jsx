@@ -24,27 +24,53 @@ const WebView = ({ url, title }) => {
         return (
           <section id="contact" className="contact-section">
             <div className="container">
-              <div className="section-header">
-                <h2>Contact Us</h2>
-                <p>Get in touch with our team for any inquiries</p>
-              </div>
+              <motion.div 
+                className="section-header"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2>Get in Touch</h2>
+                <p>Let's discuss your project requirements</p>
+              </motion.div>
               <div className="contact-content">
                 <div className="contact-info">
-                  <div className="office-location">
+                  <motion.div 
+                    className="office-location"
+                    whileHover={{ scale: 1.02 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <div className="location-icon">
+                      <i className="fas fa-building"></i>
+                    </div>
                     <h3>Head Office</h3>
-                    <p>16-A/602, Majaswadi,Prathamesh Co-op. Hsg. Society Ltd.</p>
-                    <p>New Mhada Colony,Mahakali Caves Cross Road, Poonam Nagar</p>
-                    <p>Andheri(E), Mumbai, Maharashtra 400093</p>
-                    <p>Email: smnaik45@gmail.com</p>
-                    <p>Phone: 9820730619</p>
-                  </div>
-                  <div className="office-location">
+                    <p>1/9,NAIK CHAWL, MEGHWADI </p>
+                    <p>JOGESHWARI(E), Mumbai, Maharashtra 400060</p>
+                    <div className="contact-details">
+                      <p><i className="fas fa-envelope"></i> smnaik45@gmail.com</p>
+                      <p><i className="fas fa-phone"></i> 9820730619</p>
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    className="office-location"
+                    whileHover={{ scale: 1.02 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                  >
+                    <div className="location-icon">
+                      <i className="fas fa-map-marker-alt"></i>
+                    </div>
                     <h3>Branch Office</h3>
                     <p>Subhadra Bhawan , Bhawani Shankar Road</p>
                     <p>Dadar (W), Mumbai, Maharashtra 400028</p>
-                    <p>Email: smnaik45@gmail.com</p>
-                    <p>Phone: 9820730619</p>
-                  </div>
+                    <div className="contact-details">
+                      <p><i className="fas fa-envelope"></i> smnaik45@gmail.com</p>
+                      <p><i className="fas fa-phone"></i> 9820730619</p>
+                    </div>
+                  </motion.div>
                 </div>
                 
                 <form

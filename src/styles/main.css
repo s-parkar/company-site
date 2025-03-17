@@ -219,20 +219,21 @@ body {
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    padding: 1rem;
+    padding: 1.5rem;
     border-bottom: 1px solid var(--glass-border);
+    overflow-y: auto;
   }
 
   .nav-links.active {
     display: flex;
     flex-direction: column;
-    animation: slideIn 0.3s ease-out;
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   @keyframes slideIn {
     from {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: translateY(-20px);
     }
     to {
       opacity: 1;
@@ -243,22 +244,26 @@ body {
   .nav-links ul {
     flex-direction: column;
     width: 100%;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .nav-links li {
     width: 100%;
     text-align: center;
     padding: 0.75rem;
-    background: var(--background-alt);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius);
+    border: 1px solid var(--glass-border);
     transform: translateX(0);
     transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .nav-links li:hover {
     transform: translateX(5px);
     background: var(--primary-light);
+    border-color: var(--primary-color);
   }
 
   .nav-links li:hover a {
@@ -271,9 +276,12 @@ body {
 
   .quote-btn {
     width: 100%;
-    margin-top: 1rem;
-    padding: 0.75rem;
+    margin-top: 1.5rem;
+    padding: 0.85rem;
     text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-md);
   }
 }
 

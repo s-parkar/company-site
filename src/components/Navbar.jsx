@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/hamburger.css';
+import '../styles/navbar.css';
 
 const Navbar = ({ onQuoteClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,12 +26,17 @@ const Navbar = ({ onQuoteClick }) => {
     <nav id="navbar">
       <div className="container">
         <Link to="/" className="logo">
-          <motion.img
-            src="/assets/img/logo.svg"
-            alt="S . M . NAIK & ASSOCIATES Logo"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          />
+          <motion.div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <motion.img
+              src="/assets/img/logo.svg"
+              alt="S . M . NAIK & ASSOCIATES Logo"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.h1 className="company-name">
+              S.M. NAIK & ASSOCIATES
+            </motion.h1>
+          </motion.div>
         </Link>
 
         <motion.div
@@ -58,9 +64,9 @@ const Navbar = ({ onQuoteClick }) => {
               </motion.li>
             ))}
             <motion.li variants={menuItemVariants}>
-              <button onClick={onQuoteClick} className="quote-btn">
+              <Link to="/contact" className="quote-btn">
                 Get a Quote
-              </button>
+              </Link>
             </motion.li>
           </ul>
         </motion.div>

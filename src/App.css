@@ -1,5 +1,6 @@
 .contact-section {
   padding: 4rem 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
 }
 
 .contact-content {
@@ -17,26 +18,56 @@
 
 .office-location {
   background: var(--glass-bg);
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--glass-border);
   transition: var(--transition);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .office-location:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
 }
 
 .office-location h3 {
   color: var(--primary-color);
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .office-location p {
   color: var(--text-light);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.location-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.contact-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.contact-details p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-details i {
+  color: var(--primary-color);
 }
 
 .contact-form {
@@ -46,6 +77,8 @@
   padding: 2rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .contact-form input,
@@ -54,21 +87,47 @@
   padding: 0.75rem 1rem;
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
-  background: var(--background-light);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--text-dark);
   transition: var(--transition);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--primary-light);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
 }
 
 .contact-form textarea {
   min-height: 150px;
   resize: vertical;
+}
+
+.contact-form button {
+  background: var(--gradient-primary);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
