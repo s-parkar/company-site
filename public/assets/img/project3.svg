@@ -1,0 +1,8 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#718096" />
+  <text x="50%" y="50%" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Highway Expansion</text>
+  <path d="M20,100 C100,80 150,120 250,100 S350,80 380,100" stroke="white" stroke-width="8" fill="none" />
+  <path d="M20,120 C100,100 150,140 250,120 S350,100 380,120" stroke="white" stroke-width="8" fill="none" />
+  <path d="M20,100 L20,120 M380,100 L380,120" stroke="white" stroke-width="2" />
+  <path d="M100,90 L100,110 M200,110 L200,130 M300,90 L300,110" stroke="white" stroke-width="2" stroke-dasharray="5,5" />
+</svg>

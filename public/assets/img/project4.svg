@@ -1,0 +1,10 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="#38a169" />
+  <text x="50%" y="40%" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Wetland Conservation</text>
+  <path d="M50,150 Q100,120 150,150 T250,150 T350,150" stroke="#90cdf4" stroke-width="5" fill="none" />
+  <path d="M30,130 Q60,110 90,130 T150,130 T210,130" stroke="#90cdf4" stroke-width="3" fill="none" />
+  <path d="M70,100 L90,80 L110,100" stroke="#68d391" stroke-width="2" fill="none" />
+  <path d="M150,110 L170,80 L190,110" stroke="#68d391" stroke-width="2" fill="none" />
+  <path d="M230,100 L250,70 L270,100" stroke="#68d391" stroke-width="2" fill="none" />
+  <path d="M300,110 L320,80 L340,110" stroke="#68d391" stroke-width="2" fill="none" />
+</svg>
